@@ -58,7 +58,6 @@ public class ScientistListView {
             else setBackground(Color.GREEN);
 
 
-            //System.out.println(value.getNumber() + " " +value.isConducted());
 
             return this;
         }

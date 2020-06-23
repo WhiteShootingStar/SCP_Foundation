@@ -24,8 +24,7 @@ public class SCP {
 
     @Transient
     private boolean isConducted=false;
-    @Transient
-    private  Scientist lastSelectedScientist;
+
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH},mappedBy ="observedSCP" )
     private Set<Scientist> observedBy = new HashSet<>();
@@ -165,13 +164,7 @@ public class SCP {
 
     }
 
-    public Scientist getLastSelectedScientist() {
-        return lastSelectedScientist;
-    }
 
-    public void setLastSelectedScientist(Scientist lastSelectedScientist) {
-        this.lastSelectedScientist = lastSelectedScientist;
-    }
 
     public boolean isThisScientistConducts(Scientist scientist){
         return observedBy.contains(scientist)&&conductedExperimentsOnBy.contains(scientist);

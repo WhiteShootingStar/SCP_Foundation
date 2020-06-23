@@ -68,7 +68,7 @@ public class ScientistListController {
             Set<SCP>conductsOn= new HashSet<>();
             if(observer.isPresent()) observes=observer.get().getObservedSCP();
             if(conductor.isPresent()) conductsOn=conductor.get().getConductedSCP();
-            updateSCPList(observes, conductsOn);
+            updateSCPList(observes, conductsOn); //First set are all SCP by this scientist, the other one are SCPs Conducted by him
         }
     }
 
@@ -96,7 +96,7 @@ public class ScientistListController {
         DefaultListModel<SCP> scpListModel = (DefaultListModel<SCP>) view.getScpList().getModel();
         scpListModel.removeAllElements();
         for (SCP scp : scps) {
-            assignTheSubset(scp, conductedOn);
+            assignTheSubset(scp, conductedOn); //manually assign the transient field
             scpListModel.addElement(scp);
         }
 

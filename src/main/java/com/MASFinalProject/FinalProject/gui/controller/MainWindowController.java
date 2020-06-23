@@ -31,7 +31,7 @@ public class MainWindowController {
         loginWindowController.showGUI(this);
     }
     public void showMainScientistWindow(){
-        scientistListController.showGUI(this);
+        scientistListController.showGUI(this); // probably bad approcah and interface method should be here
     }
     public void showView(JPanel panelView) {
         view.getContentPane().removeAll();

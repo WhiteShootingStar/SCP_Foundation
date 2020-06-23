@@ -51,7 +51,7 @@ public class SCPSelectionController {
         SCP selectedSCP = (SCP) view.getSCPSelectionComboBox().getModel().getSelectedItem();
         boolean isConducted = view.getRadioConductedButton().isSelected();
         Scientist sc = scientistRepo.findByPersonIdAll(scientist.getPersonId()).get();
-        SCP s = scpRepo.findBySCPIdAll(selectedSCP.getSCPId()).get();
+        SCP s = scpRepo.findBySCPIdAll(selectedSCP.getSCPId()).get(); // we have to get him form database, otherwise we will get lazy initialization exeption as SCP may not fetch scientists form some collection
         sc.removeFromConducted(s, true);//This method with true parameter will remove any element from subset and and main part. After that later in the code it will be inserted again
         if (isConducted) {
             sc.addToConducted(s);
@@ -69,7 +69,7 @@ public class SCPSelectionController {
     }
 
     public void showGUI(Scientist selectedScientist) {
-        scientist = selectedScientist;
+        scientist = selectedScientist;  //we need to store the last selected scientist in order to continue from the last scientist after addition of SCP
         scientistListController.showSCPSelection(view);
         setScientistLabel(scientist);
         view.getRadioConductedButton().setSelected(false);
@@ -92,10 +92,10 @@ public class SCPSelectionController {
 
             scientistListController.enableMainView();
         }
-        @Override
-        public void windowClosed(WindowEvent e) {
-            scientistListController.enableMainView();
-        }
+//        @Override //rarely, the SCP selection window was closing and hiding other windows. If it happens too often, uncomment this mathod
+//        public void windowClosed(WindowEvent e) {
+//            scientistListController.enableMainView();
+//        }
     }
 
     private void setScientistLabel(Scientist value) {

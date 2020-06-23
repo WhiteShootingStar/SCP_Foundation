@@ -16,10 +16,10 @@ public class SCPSelectionView extends JFrame{
     public SCPSelectionView(){
         setSize(800,600);
 
-        SCPSelection.setVisible(true);
+
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.add(SCPSelection);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); // Places window in the center
     }
     public JPanel getSCPSelection() {
         return SCPSelection;
